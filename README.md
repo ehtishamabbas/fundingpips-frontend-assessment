@@ -109,6 +109,7 @@ The test suite includes:
 3. **Real-time Updates**: Prices update automatically every 30 seconds
 4. **Historical Charts**: View 30-day price trends with interactive charts
 5. **Responsive Design**: Works seamlessly on desktop, tablet, and mobile
+6. **Demo link**: https://fundingpips-frontend-assessment-seven.vercel.app/
 
 ## 🔧 Technical Highlights
 
