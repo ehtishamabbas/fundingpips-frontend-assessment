@@ -2,13 +2,9 @@ import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { StockDetails } from '@/components/StockDetails';
 
-interface StockPageProps {
-  params: {
-    symbol: string;
-  };
-}
+import type { Metadata } from 'next';
 
-export async function generateMetadata({ params }: StockPageProps) {
+export async function generateMetadata({ params }: { params: Promise<{ symbol: string }> }): Promise<Metadata> {
   const { symbol } = await params;
   return {
     title: `${symbol.toUpperCase()} Stock - FundingPips Tracker`,
@@ -16,12 +12,11 @@ export async function generateMetadata({ params }: StockPageProps) {
   };
 }
 
-export default async function StockPage({ params }: StockPageProps) {
+export default async function StockPage({ params }: { params: Promise<{ symbol: string }> }) {
   const { symbol } = await params;
   if (!symbol) {
     notFound();
   }
-
   return (
     <div className="space-y-6">
       <Suspense fallback={<StockDetailsSkeleton />}>
